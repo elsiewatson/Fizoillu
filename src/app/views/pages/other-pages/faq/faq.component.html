@@ -1,0 +1,24 @@
+<sticky-header-component headerClass="header-sticky header-absolute">
+  <app-horizontal-menu
+    ulClassName="mx-auto"
+    [docShow]="true"
+    [showSignUp]="true"
+    [showBuyNow]="true"
+  />
+</sticky-header-component>
+<section class="pt-lg-8 pt-xl-9">
+  <div class="container position-relative pt-4 pt-lg-0">
+    <div class="row align-items-center">
+      <app-breadcrumb pageTitle="Frequently Asked Questions"></app-breadcrumb>
+    </div>
+  </div>
+</section>
+<main>
+  <faq-hero />
+
+  <faqs-list />
+
+  <!-- <faq-actionbox /> -->
+</main>
+
+<app-footer1 />

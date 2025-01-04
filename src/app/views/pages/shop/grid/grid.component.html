@@ -1,0 +1,41 @@
+<sticky-header-component [headerClass]="'header-sticky header-absolute'">
+  <app-horizontal-menu
+    ulClassName="mx-auto"
+    [showSignUp]="true"
+    [docShow]="true"
+    [showBuyNow]="true"
+  />
+</sticky-header-component>
+
+<section class="pt-lg-8 pt-xl-9">
+  <div class="container position-relative pt-4 pt-lg-0">
+    <div class="row align-items-center">
+      <app-breadcrumb pageTitle="All product" />
+    </div>
+  </div>
+</section>
+
+<section class="pt-0">
+  <div class="container">
+    <div class="row">
+      <!-- Product grid START -->
+      <div class="col-xl-12 ps-xl-12">
+        <!-- Products -->
+        <div class="row g-4 g-lg-5">
+          <h4>All Products</h4>
+          <!-- Product item -->
+          @for (product of productGridList; track $index) {
+            <div class="col-sm-6 col-lg-4">
+              <product-card [product]="product" />
+            </div>
+          }
+        </div>
+        <!-- Row END -->
+      </div>
+    </div>
+  </div>
+</section>
+<!-- =======================
+Product content END -->
+
+<app-footer1 />

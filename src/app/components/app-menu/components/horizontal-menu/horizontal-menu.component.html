@@ -1,0 +1,177 @@
+<!-- Logo Nav START -->
+<nav [class]="'navbar navbar-expand-xl'" [ngClass]="navClass">
+  <div [ngClass]="containerClass ? 'container' : 'container-fluid'">
+    <!-- Logo START -->
+    <app-logo-box class="navbar-brand me-0" [ngClass]="logoClass" />
+    <!-- Logo END -->
+
+    <!-- Main navbar START -->
+    <div
+      #collapse="ngbCollapse"
+      [(ngbCollapse)]="isCollapsed"
+      class="navbar-collapse collapse"
+      id="navbarCollapse"
+      ngbAccordion
+    >
+      <ul
+        class="navbar-nav navbar-nav-scroll dropdown-hover"
+        [ngClass]="ulClassName"
+      >
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/'">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/about'">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/products'">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/blogs'">Blogs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/faqs'">FAQs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/contact'">Contact Us</a>
+        </li>
+
+        <!-- <ng-container *ngIf="menuItems.length">
+          <app-demos-menu-dropdown
+            [menuItems]="menuItems[0].children"
+            [activeMenuItems]="activeMenuItems"
+          ></app-demos-menu-dropdown>
+          <app-pages-menu-dropdown
+            [menuItems]="menuItems[1].children"
+            [activeMenuItems]="activeMenuItems"
+          ></app-pages-menu-dropdown>
+
+          <ng-container *ngIf="resourcesMenu">
+            <app-resources-menu-dropdown></app-resources-menu-dropdown>
+          </ng-container>
+
+          <app-portfolio-menu-dropdown
+            [menuItems]="menuItems[2].children"
+            [activeMenuItems]="activeMenuItems"
+          ></app-portfolio-menu-dropdown>
+
+          <ng-container *ngIf="megaMenu">
+            <app-mega-menu-dropdown></app-mega-menu-dropdown>
+          </ng-container>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="'/contact/v1'">Contact us</a>
+          </li>
+        </ng-container> -->
+      </ul>
+    </div>
+    <ul class="nav align-items-center dropdown-hover ms-sm-2">
+      <!-- Buy now button -->
+      @if (showBuyNow) {
+        <li class="nav-item d-none d-sm-block">
+          <a routerLink="/products">
+            <button class="btn btn-sm btn-primary mb-0">Rent now!</button>
+          </a>
+        </li>
+      }
+
+      <!-- Responsive navbar toggler -->
+      <li class="nav-item">
+        <button
+          class="navbar-toggler ms-sm-3 p-2"
+          (click)="collapse.toggle()"
+          [attr.aria-expanded]="!isCollapsed"
+          aria-controls="collapseExample"
+          data-bs-target="#navbarCollapse"
+          aria-controls="navbarCollapse"
+          [attr.aria-expanded]="isOffcanvasOpen"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarCollapse"
+          aria-controls="navbarCollapse"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-animation">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- <ng-template
+  #content
+  let-offcanvas
+  class="offcanvas offcanvas-end"
+  tabindex="-1"
+  id="offcanvasMenu"
+>
+  <div class="offcanvas-header justify-content-between border-bottom px-3">
+    <h5 class="mb-0">Your Cart</h5>
+    <button
+      type="button"
+      class="btn-close text-reset"
+      (click)="offcanvas.close('Close click')"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+
+  <div class="offcanvas-body d-flex flex-column gap-5 px-3">
+    <ng-container *ngIf="state$ | async as state">
+      @for (cart of state.cartItems; track $index) {
+        <div class="row g-3">
+          <div class="col-4">
+            <img
+              class="rounded-2 bg-light p-2"
+              [src]="cart.product.images[0]"
+              alt="avatar"
+            />
+          </div>
+          <div class="col-8">
+            <p class="heading-color fw-semibold mb-1">
+              {{ cart.product.name }}
+            </p>
+            <div class="d-flex justify-content-between align-items-center">
+              <select
+                class="form-select form-select-sm w-auto"
+                aria-label="Default select example"
+              >
+                <option value="1">01</option>
+                <option value="2">02</option>
+                <option value="3">03</option>
+              </select>
+
+              <a
+                href="javascript:void(0);"
+                class="btn btn-sm btn-link p-0"
+                (click)="
+                  shoppingService.updateQuantityForProduct(cart.product, 0)
+                "
+                >Remove</a
+              >
+            </div>
+          </div>
+        </div>
+      }
+    </ng-container>
+
+    <div class="mt-auto">
+      <div class="d-flex justify-content-between mb-2">
+        <span class="heading-color fw-semibold">Subtotal</span>
+        <h6 class="text-success mb-0">
+          {{ currency
+          }}{{ shoppingService.getCalculatedOrder().orderTotal.toFixed(2) }}
+        </h6>
+      </div>
+      <div class="d-grid">
+        <a routerLink="/shop/checkout" class="btn btn-lg btn-dark mb-0"
+          >Continue to Checkout</a
+        >
+      </div>
+    </div>
+  </div>
+</ng-template> -->

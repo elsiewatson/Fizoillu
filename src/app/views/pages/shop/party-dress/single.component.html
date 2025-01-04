@@ -1,0 +1,114 @@
+<sticky-header-component headerClass="header-sticky header-absolute">
+  <app-horizontal-menu
+    ulClassName="mx-auto"
+    [docShow]="true"
+    [showSignUp]="true"
+    [showBuyNow]="true"
+  />
+</sticky-header-component>
+
+<!-- =======================
+Hero START -->
+<section>
+  <div class="container">
+    <!-- Title and breadcrumb -->
+    <app-breadcrumb pageTitle="Party Dress" />
+
+    <div class="row mt-7">
+      <!-- Images -->
+      <div class="col-md-5 mb-5 mb-md-0">
+        <!-- Slider START -->
+        <div class="swiper">
+          <lightgallery [settings]="setting">
+            <swiper-container
+              [config]="swiperConfig"
+              init="false"
+              class="swiper-wrapper"
+            >
+              <!-- Slider items -->
+              @for (image of productImages; track $index) {
+                <swiper-slide class="swiper-slide">
+                  <a class="w-100 h-100" data-glightbox data-gallery="gallery">
+                    <div class="card card-element-hover overflow-hidden">
+                      <!-- Image -->
+                      <img [src]="image" class="rounded-3" alt="" />
+                      <!-- Full screen button -->
+                      <div class="hover-element w-100 h-100">
+                        <i
+                          class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"
+                        ></i>
+                      </div>
+                    </div>
+                  </a>
+                </swiper-slide>
+              }
+            </swiper-container>
+          </lightgallery>
+
+          <!-- Add pagination and navigation elements here -->
+          <div
+            class="d-flex justify-content-between position-absolute top-50 start-0 w-100"
+          >
+            <a
+              href="javascript:void(0);"
+              class="btn btn-dark btn-icon rounded-circle mb-0 swiper-button-prev"
+              ><i class="bi bi-arrow-left"></i
+            ></a>
+            <a
+              href="javascript:void(0);"
+              class="btn btn-dark btn-icon rounded-circle mb-0 swiper-button-next"
+              ><i class="bi bi-arrow-right"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product detail -->
+      <div class="col-md-7 ps-md-6">
+        <!-- Title -->
+        <h1 class="h2 mb-4">Party Dress</h1>
+
+        <!-- Price -->
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0.5rem;
+          "
+        >
+          <h4 class="text-success">{{ currency }} 520.00</h4>
+          <h6 class="text-decoration-line-through">{{ currency }} 800.00</h6>
+        </div>
+        <p class="mb-4">
+          Without a doubt, our party dress rental is perhaps the perfect option
+          for children at any festive event. Its flattering, fun design
+          guarantees your boy-child looks stylish and vibrant throughout any
+          occasion. Wearing this outfit will surely make your child stand out at
+          any event.
+        </p>
+        <h6>Description</h6>
+        <p class="mb-4">
+          Appropriate for celebrations, birthdays, and more, this party dress
+          from Fizoillu adds a playful yet sleek touch to your child’s wardrobe.
+          Curated with bold patterns and colors that attract the eye, it
+          provides an appropriate fit and effortless movement. The high-standard
+          fabric of this outfit guarantees lasting comfort, while the modish
+          details give it a lavish feel.
+        </p>
+
+        <!-- Button -->
+        <div class="d-grid">
+          <a href="/cart" class="btn btn-primary mb-0 w-100"
+            ><i class="bi bi-cart2 me-2"></i>Rent Now</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <shop-single-specification /> -->
+
+<shop-single-similar-product />
+<app-footer1 />

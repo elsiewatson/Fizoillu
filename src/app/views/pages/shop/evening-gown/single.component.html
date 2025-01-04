@@ -1,0 +1,114 @@
+<sticky-header-component headerClass="header-sticky header-absolute">
+  <app-horizontal-menu
+    ulClassName="mx-auto"
+    [docShow]="true"
+    [showSignUp]="true"
+    [showBuyNow]="true"
+  />
+</sticky-header-component>
+
+<!-- =======================
+Hero START -->
+<section>
+  <div class="container">
+    <!-- Title and breadcrumb -->
+    <app-breadcrumb pageTitle="Evening Gown" />
+
+    <div class="row mt-7">
+      <!-- Images -->
+      <div class="col-md-5 mb-5 mb-md-0">
+        <!-- Slider START -->
+        <div class="swiper">
+          <lightgallery [settings]="setting">
+            <swiper-container
+              [config]="swiperConfig"
+              init="false"
+              class="swiper-wrapper"
+            >
+              <!-- Slider items -->
+              @for (image of productImages; track $index) {
+                <swiper-slide class="swiper-slide">
+                  <a class="w-100 h-100" data-glightbox data-gallery="gallery">
+                    <div class="card card-element-hover overflow-hidden">
+                      <!-- Image -->
+                      <img [src]="image" class="rounded-3" alt="" />
+                      <!-- Full screen button -->
+                      <div class="hover-element w-100 h-100">
+                        <i
+                          class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"
+                        ></i>
+                      </div>
+                    </div>
+                  </a>
+                </swiper-slide>
+              }
+            </swiper-container>
+          </lightgallery>
+
+          <!-- Add pagination and navigation elements here -->
+          <div
+            class="d-flex justify-content-between position-absolute top-50 start-0 w-100"
+          >
+            <a
+              href="javascript:void(0);"
+              class="btn btn-dark btn-icon rounded-circle mb-0 swiper-button-prev"
+              ><i class="bi bi-arrow-left"></i
+            ></a>
+            <a
+              href="javascript:void(0);"
+              class="btn btn-dark btn-icon rounded-circle mb-0 swiper-button-next"
+              ><i class="bi bi-arrow-right"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product detail -->
+      <div class="col-md-7 ps-md-6">
+        <!-- Title -->
+        <h1 class="h2 mb-4">Evening Gown</h1>
+
+        <!-- Price -->
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0.5rem;
+          "
+        >
+          <h4 class="text-success">{{ currency }} 1080.00</h4>
+          <h6 class="text-decoration-line-through">{{ currency }} 1500.00</h6>
+        </div>
+        <p class="mb-4">
+          Evening gowns are extremely popular among women because of the way
+          they enhance the overall look. You can now rent a beautiful evening
+          gown from us, designed meticulously to make a statement. Its graceful
+          silhouette and lavish fabric guarantee that your look reaches the next
+          level at any high-profile occasion.
+        </p>
+        <h6>Description</h6>
+        <p class="mb-4">
+          Fizoillu's evening gown selection features a range of styles, from
+          modern designs to classic floor-lengths. Our evening gowns are
+          meticulously made with sophistication and comfort. Ideal for red
+          carpets, galas, and other formal events, these gowns offer an ideal
+          fit and satisfying shape. You can select from an array of colors and
+          cuts.
+        </p>
+
+        <!-- Button -->
+        <div class="d-grid">
+          <a href="/cart" class="btn btn-primary mb-0 w-100"
+            ><i class="bi bi-cart2 me-2"></i>Rent Now</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <shop-single-specification /> -->
+
+<shop-single-similar-product />
+<app-footer1 />

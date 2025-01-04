@@ -1,0 +1,21 @@
+<sticky-header-component [headerClass]="'header-sticky header-absolute'">
+  <app-horizontal-menu
+    [resourcesMenu]="true"
+    [containerClass]="true"
+    [ulClassName]="'mx-auto'"
+    [showSignUp]="true"
+    [showBuyNow]="true"
+  />
+</sticky-header-component>
+
+<main>
+  <shop-hero />
+  <shop-featured-category />
+  <shop-trending-products />
+  <shop-shop-features />
+  <shop-latest-collections />
+  <shop-product-box />
+  <shop-brand-collection />
+</main>
+
+<app-footer1 />

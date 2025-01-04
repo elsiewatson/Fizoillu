@@ -1,0 +1,114 @@
+<sticky-header-component headerClass="header-sticky header-absolute">
+  <app-horizontal-menu
+    ulClassName="mx-auto"
+    [docShow]="true"
+    [showSignUp]="true"
+    [showBuyNow]="true"
+  />
+</sticky-header-component>
+
+<!-- =======================
+Hero START -->
+<section>
+  <div class="container">
+    <!-- Title and breadcrumb -->
+    <app-breadcrumb pageTitle="Blazer" />
+
+    <div class="row mt-7">
+      <!-- Images -->
+      <div class="col-md-5 mb-5 mb-md-0">
+        <!-- Slider START -->
+        <div class="swiper">
+          <lightgallery [settings]="setting">
+            <swiper-container
+              [config]="swiperConfig"
+              init="false"
+              class="swiper-wrapper"
+            >
+              <!-- Slider items -->
+              @for (image of productImages; track $index) {
+                <swiper-slide class="swiper-slide">
+                  <a class="w-100 h-100" data-glightbox data-gallery="gallery">
+                    <div class="card card-element-hover overflow-hidden">
+                      <!-- Image -->
+                      <img [src]="image" class="rounded-3" alt="" />
+                      <!-- Full screen button -->
+                      <div class="hover-element w-100 h-100">
+                        <i
+                          class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"
+                        ></i>
+                      </div>
+                    </div>
+                  </a>
+                </swiper-slide>
+              }
+            </swiper-container>
+          </lightgallery>
+
+          <!-- Add pagination and navigation elements here -->
+          <div
+            class="d-flex justify-content-between position-absolute top-50 start-0 w-100"
+          >
+            <a
+              href="javascript:void(0);"
+              class="btn btn-dark btn-icon rounded-circle mb-0 swiper-button-prev"
+              ><i class="bi bi-arrow-left"></i
+            ></a>
+            <a
+              href="javascript:void(0);"
+              class="btn btn-dark btn-icon rounded-circle mb-0 swiper-button-next"
+              ><i class="bi bi-arrow-right"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product detail -->
+      <div class="col-md-7 ps-md-6">
+        <!-- Title -->
+        <h1 class="h2 mb-4">Blazer</h1>
+
+        <!-- Price -->
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0.5rem;
+          "
+        >
+          <h4 class="text-success">{{ currency }} 560.00</h4>
+          <h6 class="text-decoration-line-through">{{ currency }} 700.00</h6>
+        </div>
+        <p class="mb-4">
+          Blazers are another great fashion option for men that surely enhance
+          their overall appearance. Fizoillu&rsquo;s blazer rentals are sharp
+          and stylish and will go with any semi-formal or professional event.
+          Customized to perfection, this blazer provides a clean, crisp
+          appearance with a flattering fit for every man.
+        </p>
+        <h6>Description</h6>
+        <p class="mb-4">
+          From cocktail parties to business meetings, Fizoillu&rsquo;s blazer
+          guarantees you are always dressed to impress. Produced from premium
+          fabric, our blazer features thorough stitching and a refined cut,
+          facilitating versatility and comfort. Whether you want to pair it with
+          jeans or formal trousers, this blazer will add a chic touch to your
+          wardrobe, which makes it perfect for a variety of occasions.
+        </p>
+
+        <!-- Button -->
+        <div class="d-grid">
+          <a href="/cart" class="btn btn-primary mb-0 w-100"
+            ><i class="bi bi-cart2 me-2"></i>Rent Now</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <shop-single-specification /> -->
+
+<shop-single-similar-product />
+<app-footer1 />

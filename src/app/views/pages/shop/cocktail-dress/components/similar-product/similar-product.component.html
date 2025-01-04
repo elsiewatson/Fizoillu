@@ -1,0 +1,28 @@
+<section class="pt-0">
+  <div class="container">
+    <!-- Title -->
+    <div class="d-flex justify-content-between mb-5">
+      <h2 class="h4 mb-0">Similar products</h2>
+    </div>
+
+    <!-- Slider START -->
+    <div
+      class="swiper"
+      data-swiper-options="{
+			}"
+    >
+      <swiper-container
+        [config]="swiperConfig"
+        init="false"
+        class="swiper-wrapper"
+      >
+        <!-- Slider items -->
+        @for (product of productList; track $index) {
+          <swiper-slide class="swiper-slide">
+            <product-card [product]="product" />
+          </swiper-slide>
+        }
+      </swiper-container>
+    </div>
+  </div>
+</section>

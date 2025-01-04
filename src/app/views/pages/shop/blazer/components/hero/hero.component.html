@@ -1,0 +1,75 @@
+<div class="row mt-7">
+  <!-- Images -->
+  <div class="col-md-5 mb-5 mb-md-0">
+    <!-- Slider START -->
+    <div class="swiper">
+      <lightgallery [settings]="setting">
+        <swiper-container
+          [config]="swiperConfig"
+          init="false"
+          class="swiper-wrapper"
+        >
+          <!-- Slider items -->
+          @for (image of productImages; track $index) {
+            <swiper-slide class="swiper-slide">
+              <a
+                class="w-100 h-100"
+                data-glightbox
+                data-gallery="gallery"
+              >
+                <div class="card card-element-hover overflow-hidden">
+                  <!-- Image -->
+                  <img [src]="image" class="rounded-3" alt="" />
+                  <!-- Full screen button -->
+                  <div class="hover-element w-100 h-100">
+                    <i
+                      class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"
+                    ></i>
+                  </div>
+                </div>
+              </a>
+            </swiper-slide>
+          }
+        </swiper-container>
+      </lightgallery>
+
+      <!-- Add pagination and navigation elements here -->
+      <div
+        class="d-flex justify-content-between position-absolute top-50 start-0 w-100"
+      >
+        <a
+          href="javascript:void(0);"
+          class="btn btn-dark btn-icon rounded-circle mb-0 swiper-button-prev"
+          ><i class="bi bi-arrow-left"></i
+        ></a>
+        <a
+          href="javascript:void(0);"
+          class="btn btn-dark btn-icon rounded-circle mb-0 swiper-button-next"
+          ><i class="bi bi-arrow-right"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product detail -->
+  <div class="col-md-7 ps-md-6">
+    <!-- Title -->
+    <h1 class="h2 mb-4">The ultimate smartphone for modern lifestyles</h1>
+
+    <!-- Price -->
+    <h4 class="text-success mb-4">{{ currency }}215.00</h4>
+
+    <p class="mb-4">
+      Packed with cutting-edge features and innovations, this smartphone is more
+      than just a communication tool, it's a lifestyle companion that keeps up
+      with your needs.
+    </p>
+
+    <!-- Button -->
+    <div class="d-grid">
+      <a routerLink="/shop/cart" class="btn btn-primary mb-0 w-100"
+        ><i class="bi bi-cart2 me-2"></i>Add to Cart</a
+      >
+    </div>
+  </div>
+</div>

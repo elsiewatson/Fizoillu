@@ -1,0 +1,31 @@
+<sticky-header-component [headerClass]="'header-sticky header-absolute'">
+  <app-horizontal-menu
+    [resourcesMenu]="true"
+    [containerClass]="true"
+    [ulClassName]="'mx-auto'"
+    [showSignUp]="true"
+    [showBuyNow]="true"
+  />
+</sticky-header-component>
+<section class="pt-lg-8 pt-xl-9">
+  <div class="container position-relative pt-4 pt-lg-0">
+    <div class="row align-items-center">
+      <app-breadcrumb pageTitle="About Us"></app-breadcrumb>
+    </div>
+  </div>
+</section>
+<main>
+  <about-banner />
+
+  <!-- <about-video /> -->
+
+  <about-counter />
+
+  <about />
+
+  <about-cta />
+
+  <!-- <about-team /> -->
+</main>
+
+<app-footer1 />
