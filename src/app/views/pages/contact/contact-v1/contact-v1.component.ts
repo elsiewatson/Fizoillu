@@ -50,7 +50,7 @@ export class ContactV1Component implements OnInit {
       name: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       number: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
-      message: ['', [Validators.required, Validators.minLength(10)]],
+      message: ['', [Validators.required, Validators.minLength(2)]],
     })
   }
 

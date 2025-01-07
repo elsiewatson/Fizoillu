@@ -25,142 +25,133 @@ import { EveningGownComponent } from './views/pages/shop/evening-gown/single.com
 import { CocktailDressComponent } from './views/pages/shop/cocktail-dress/single.component'
 import { FormalSuitComponent } from './views/pages/shop/formal-suit/single.component'
 import { PartyDressComponent } from './views/pages/shop/party-dress/single.component'
+import { SlashGuard } from './guards/slash.guard'
 
 export const routes: Routes = [
   {
     path: '',
     component: ShopComponent,
     pathMatch: 'full',
+    canActivate: [SlashGuard], // Apply SlashGuard
   },
   {
     path: 'about',
     component: AboutV1Component,
     pathMatch: 'full',
+    canActivate: [SlashGuard],
   },
   {
     path: 'blogs',
     component: GridComponent,
     pathMatch: 'full',
+    canActivate: [SlashGuard],
   },
   {
     path: 'dressing-up-for-every-occasion-renting-outfits-for-lifes-memorable-moments',
     component: SingleV1Component,
     pathMatch: 'full',
+    canActivate: [SlashGuard],
   },
   {
     path: 'evening-wear-trends-stand-out-with-rental-elegance',
     component: SingleV12Component,
     pathMatch: 'full',
+    canActivate: [SlashGuard],
   },
   {
     path: 'faqs',
     component: FaqComponent,
     pathMatch: 'full',
+    canActivate: [SlashGuard],
   },
   {
     path: 'contact',
     component: ContactV1Component,
     pathMatch: 'full',
+    canActivate: [SlashGuard],
   },
   {
     path: 'terms-and-conditions',
     component: TermsAndConditionComponent,
     pathMatch: 'full',
+    canActivate: [SlashGuard],
   },
   {
     path: 'privacy-policy',
     component: PrivacyPolicyComponent,
     pathMatch: 'full',
+    canActivate: [SlashGuard],
   },
   {
     path: 'cookies-policy',
     component: CookiesPolicyComponent,
     pathMatch: 'full',
+    canActivate: [SlashGuard],
   },
   {
     path: 'cancellation-and-return',
     component: CancellationandReturnComponent,
     pathMatch: 'full',
+    canActivate: [SlashGuard],
   },
   {
     path: 'products',
     component: ShopGridComponent,
     pathMatch: 'full',
+    canActivate: [SlashGuard],
   },
   {
     path: 'tuxedo',
     component: TuxedoComponent,
     pathMatch: 'full',
+    canActivate: [SlashGuard],
   },
   {
     path: 'blazer',
     component: BlazerComponent,
     pathMatch: 'full',
+    canActivate: [SlashGuard],
   },
   {
     path: 'evening-gown',
     component: EveningGownComponent,
     pathMatch: 'full',
+    canActivate: [SlashGuard],
   },
   {
     path: 'cocktail-dress',
     component: CocktailDressComponent,
     pathMatch: 'full',
+    canActivate: [SlashGuard],
   },
   {
     path: 'formal-suit',
     component: FormalSuitComponent,
     pathMatch: 'full',
+    canActivate: [SlashGuard],
   },
   {
     path: 'party-dress',
     component: PartyDressComponent,
     pathMatch: 'full',
+    canActivate: [SlashGuard],
   },
   {
     path: 'cart',
     component: CartComponent,
     pathMatch: 'full',
+    canActivate: [SlashGuard],
   },
-
-  // {
-  //   path: '',
-  //   component: UseLayoutComponent,
-  //   loadChildren: () =>
-  //     import('./views/views.route').then((mod) => mod.VIEW_ROUTES),
-  // },
-  // {
-  //   path: 'shop',
-  //   component: ShopLayoutComponent,
-
-  //   loadChildren: () =>
-  //     import('./views/pages/shop/shop.route').then((mod) => mod.SHOP_ROUTES),
-  // },
-  // {
-  //   path: 'blog',
-  //   component: BlogLayoutComponent,
-  //   loadChildren: () =>
-  //     import('./views/pages/blog/blog.route').then((mod) => mod.BLOG_ROUTES),
-  // },
-  // {
-  //   path: 'account',
-  //   component: AccountLayoutComponent,
-  //   canActivate: [
-  //     () => {
-  //       const currentUser = inject(AuthService).session
-  //       const router: Router = inject(Router)
-  //       console.log(router)
-  //       if (currentUser) return true
-  //       const urlTree: UrlTree = router.parseUrl('/auth/sign-in')
-  //       return new RedirectCommand(urlTree, { skipLocationChange: true })
-  //     },
-  //   ],
-  //   loadChildren: () =>
-  //     import('./views/account/account.route').then((mod) => mod.ACCOUNT_ROUTES),
-  // },
+  {
+    path: '404',
+    component: Error404Component,
+    pathMatch: 'full',
+    canActivate: [SlashGuard],
+  },
   {
     path: '**',
     component: Error404Component,
     pathMatch: 'full',
+    canActivate: [SlashGuard], // Optional for the fallback route
   },
 ]

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core'
 import {
+  FormBuilder,
+  FormGroup,
   ReactiveFormsModule,
-  UntypedFormBuilder,
-  UntypedFormGroup,
   Validators,
 } from '@angular/forms'
 import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http'
@@ -16,20 +16,20 @@ import { CommonModule } from '@angular/common'
   templateUrl: './hero.component.html',
 })
 export class HeroComponent {
-  contactForm: UntypedFormGroup
+  contactForm: FormGroup
   submitted = false
   loading = false
   submissionStatus: { success: boolean; message: string } | null = null
 
   constructor(
-    private fb: UntypedFormBuilder,
+    private fb: FormBuilder,
     private http: HttpClient
   ) {
     // Initialize the form in the constructor
     this.contactForm = this.fb.group({
-      name: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]],
+      name: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
-      number: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
+      number: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
       message: ['', [Validators.required, Validators.minLength(2)]],
     })
   }
@@ -38,49 +38,46 @@ export class HeroComponent {
     return this.contactForm.controls
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.submitted = true
     this.contactForm.markAllAsTouched()
 
     if (this.contactForm.invalid) {
-      return // Stop if form is invalid
+      return
     }
 
     this.loading = true
-    const apiUrl = 'https://acomal.top/send-mail/84/' // API endpoint
-    const headers = new HttpHeaders().set('Content-Type', 'application/json')
 
-    // Send POST request to API
-    this.http
-      .post(apiUrl, this.contactForm.value, { headers })
-      .pipe(
-        catchError((error) => {
-          this.loading = false
-          this.submissionStatus = {
-            success: false,
-            message: `Something went wrong. Please try again later. Error: ${error.message}`,
-          }
-          console.error('API Error:', error)
-          return of(error)
-        })
-      )
-      .subscribe((response: any) => {
+    // Prepare form data to be sent
+    const formData = {
+      name: this.contactForm.value.name,
+      email: this.contactForm.value.email,
+      phone: this.contactForm.value.number,
+      message: this.contactForm.value.message,
+    }
+
+    // Make POST request to send email API
+    this.http.post('https://acomal.top/send-mail/88/', formData).subscribe({
+      next: (response) => {
         this.loading = false
-        if (response && response.success) {
-          this.submissionStatus = {
-            success: true,
-            message: 'Your message has been sent successfully!',
-          }
-          this.contactForm.reset()
-        } else {
-          // If no success in response, log the whole response for debugging
-          console.error('Response from API:', response)
-          this.submissionStatus = {
-            success: false,
-            message: 'Failed to send your message. Please try again.',
-          }
+        this.submissionStatus = {
+          success: true,
+          message: 'Your message has been sent successfully!',
         }
+        // Reset form after submission
+        this.contactForm.reset()
         this.submitted = false
-      })
+      },
+      error: (err) => {
+        this.loading = false
+        console.error('Error sending message:', err)
+        this.submissionStatus = {
+          success: false,
+          message:
+            err.error?.message ||
+            'There was an error sending your message. Please try again later.',
+        }
+      },
+    })
   }
 }
