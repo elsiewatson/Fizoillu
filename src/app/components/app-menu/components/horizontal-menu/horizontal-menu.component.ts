@@ -131,7 +131,7 @@ export class HorizontalMenuComponent implements OnInit {
     return this.menuService.getActiveClass(this.activeMenuItems, key)
   }
 
-  changeTheme(mode: 'light' | 'dark' | 'auto') {
+  changeTheme(mode: 'light') {
     this.mode = mode
     this.themeModeService.updateTheme(mode)
   }
