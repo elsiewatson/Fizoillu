@@ -28,7 +28,12 @@ Hero START -->
               <!-- Slider items -->
               @for (image of productImages; track $index) {
                 <swiper-slide class="swiper-slide">
-                  <a class="w-100 h-100" data-glightbox data-gallery="gallery">
+                  <a
+                    class="w-100 h-100"
+                    [attr.data-src]="image"
+                    data-glightbox
+                    data-gallery="gallery"
+                  >
                     <div class="card card-element-hover overflow-hidden">
                       <!-- Image -->
                       <img [src]="image" class="rounded-3" alt="" />
